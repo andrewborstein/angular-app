@@ -30,6 +30,15 @@
     this.products = gems;
   });
 
+  // controller for the reviews
+  app.controller('ReviewController', function(){
+    this.review = {};
+    this.addReview = function(product){
+      product.reviews.push(this.review);
+      this.review = {};
+    };
+  });
+
   var gems = [
     { 
       name: 'Azurite', 
@@ -43,7 +52,11 @@
         'img/coffeescript.png'
       ],
       specs: 'Some specs go here.',
-      review: 'This gem is so sweeeet!'
+      reviews: [{
+          body: 'This gem is so sweeeet!',
+          stars: '2',
+          author: 'joe@schmoe.com',
+        }]
     },
     { 
       name: 'Bloodstone', 
@@ -57,7 +70,11 @@
         'img/sass.png'
       ],
       specs: 'Spectators n such.',
-      review: 'YOLO, gem. Nahmean?'
+      reviews: [{
+          body: 'YOLO, gem. Nahmean?',
+          stars: '4',
+          author: 'guy@smiley.com',
+        }]
     },
     { 
     name: 'Zircon', 
@@ -71,7 +88,15 @@
         'img/rspec.png' 
       ],
       specs: 'More spectaclees.',
-      review: 'OMG this gem.'
+      reviews: [{
+          body: 'OMG this gem is a GEM.',
+          stars: '5',
+          author: 'person@email.com',
+        }, {
+          body: 'Ohhh boy Here we go.',
+          stars: '1',
+          author: 'dude@wheresmycar.com',
+        }]
     }
   ];
 })();
