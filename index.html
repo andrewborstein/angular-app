@@ -14,10 +14,7 @@
             <!-- hide when product solOut attr is true (default = false) -->
             <div class="panel panel-default" ng-hide="product.soldOut" >
               <div class="panel-heading">
-                <h3 class="text-primary text-center">{{product.name | uppercase}} 
-                  <!-- filter results -  {{data | filter:options }} -->
-                  <span class="price">{{product.price | currency}}</span>
-                </h3>
+                <product-title></product-title>
               </div>
               <div class="panel-body">
                 <div class="col-xs-12" ng-show="product.images.length" ng-controller="GalleryController as gallery">
@@ -28,7 +25,7 @@
                     </div>
                     <ul class="thumbs clearfix">
                       <li class="small-image pull-left" ng-repeat="image in product.images">
-                        <a href ng-click="gallery.setCurrent([image])"><img ng-src="{{image}}" class="img-responsive" /></a>
+                        <a href ng-click="gallery.setCurrent(image)"><img ng-src="{{image}}" class="img-responsive" /></a>
                       </li>
                     </ul>
                   </div>
@@ -55,33 +52,31 @@
                     <div class="review" ng-repeat="review in product.reviews">
                       <strong>{{review.stars}} Stars</strong> <br>
                       <blockquote>{{review.body}}</blockquote>
-                      <cite>- {{review.author}}</cite> 
+                      <cite>- {{review.author}} on {{review.createdOn | date}}</cite> 
                       <hr>
                     </div>
                     
                     <h4>SUBMIT YOUR REVIEW</h4>
-                    <form nam="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+                    <form nam="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
                       <div class="review">
                         <strong>{{reviewCtrl.review.stars}} Stars</strong> <br>
                         <blockquote>{{reviewCtrl.review.body}}</blockquote>
                         <cite>- {{reviewCtrl.review.author}}</cite>                        
                       </div>
                       <fieldset class="form-group">
-                        <select ng-model="reviewCtrl.review.stars" ng-init="review.stars=''" class="form-control">
+                        <select ng-model="reviewCtrl.review.stars" ng-init="review.stars=''" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" required>
                           <option value="">Choose a star rating</option>
-                          <option value="1">1 star</option>
-                          <option value="2">2 stars</option>
-                          <option value="3">3 star</option>
-                          <option value="4">4 stars</option>
-                          <option value="5">5 star</option>
                         </select>
                       </fieldset>
                       <fieldset class="form-group">
-                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Leave your review here..."></textarea>
+                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Leave your review here..." required></textarea>
                       </fieldset>
                       
                       <fieldset class="form-group">
-                        <input type="email" ng-model="reviewCtrl.review.author" class="form-control" placeholder="your@email.com">
+                        <input type="email" ng-model="reviewCtrl.review.author" class="form-control" placeholder="your@email.com" required>
+                      </fieldset>
+                      <fieldset class="form-group">
+                        <div> reviewForm is {{reviewForm.$valid}} </div>
                       </fieldset>
                       <fieldset class="form-group">
                         <input type="submit" value="Submit" class="form-control btn btn-primary">
