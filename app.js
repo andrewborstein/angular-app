@@ -102,7 +102,7 @@
     };
   });
 
-  app.directive('includes/productReviews', function(){
+  app.directive('productReviews', function(){
     return {
       restrict: 'E',
       templateUrl: 'includes/product-reviews.html'
