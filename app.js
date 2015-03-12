@@ -57,9 +57,17 @@
   var app = angular.module('gemStore', []);
 
   // controller for the details panel
+  /*
   app.controller('PanelController', function(){
-    
+    this.tab = 1;
+    this.selectTab = function(setTab) {
+      this.tab = setTab;
+    };
+    this.isSelected = function(checkTab){
+      return this.tab === checkTab;
+    };
   });
+  */
 
   // controller for the image gallery
   app.controller('GalleryController', function(){
@@ -112,7 +120,7 @@
     return {
       restrict: 'E',
       templateUrl: 'image-gallery.html'
-      controller('name', ['', function(){
+      controller: function(){
         this.tab = 1;
         this.selectTab = function(setTab) {
           this.tab = setTab;
@@ -120,8 +128,8 @@
         this.isSelected = function(checkTab){
           return this.tab === checkTab;
         };
+      },
       controllerAs: 'panels'
-      }])
     };
   });
 
