@@ -100,6 +100,13 @@
     };
   });
 
+  app.directive('productReview', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'product-review.html'
+    };
+  });
+
   var test = []
   var gems = [
     { 

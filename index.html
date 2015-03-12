@@ -47,41 +47,7 @@
                   <div class="well" ng-show="panel.isSelected(1)">{{product.description}}</div>
                   <div class="well" ng-show="panel.isSelected(2)">{{product.specs}}</div>
                   <div class="well" ng-show="panel.isSelected(3)">
-                  
-                    <h4>REVIEWS</h4>
-                    <div class="review" ng-repeat="review in product.reviews">
-                      <strong>{{review.stars}} Stars</strong> <br>
-                      <blockquote>{{review.body}}</blockquote>
-                      <cite>- {{review.author}} on {{review.createdOn | date}}</cite> 
-                      <hr>
-                    </div>
-                    
-                    <h4>SUBMIT YOUR REVIEW</h4>
-                    <form nam="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-                      <div class="review">
-                        <strong>{{reviewCtrl.review.stars}} Stars</strong> <br>
-                        <blockquote>{{reviewCtrl.review.body}}</blockquote>
-                        <cite>- {{reviewCtrl.review.author}}</cite>                        
-                      </div>
-                      <fieldset class="form-group">
-                        <select ng-model="reviewCtrl.review.stars" ng-init="review.stars=''" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" required>
-                          <option value="">Choose a star rating</option>
-                        </select>
-                      </fieldset>
-                      <fieldset class="form-group">
-                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Leave your review here..." required></textarea>
-                      </fieldset>
-                      
-                      <fieldset class="form-group">
-                        <input type="email" ng-model="reviewCtrl.review.author" class="form-control" placeholder="your@email.com" required>
-                      </fieldset>
-                      <fieldset class="form-group">
-                        <div> reviewForm is {{reviewForm.$valid}} </div>
-                      </fieldset>
-                      <fieldset class="form-group">
-                        <input type="submit" value="Submit" class="form-control btn btn-primary">
-                      </fieldset>
-                    </form>
+                    <product-reviews></product-review>
                   </div>
 
                 <div class="text-center">
