@@ -119,7 +119,7 @@
   app.directive('productPanels', function(){
     return {
       restrict: 'E',
-      templateUrl: 'image-gallery.html'
+      templateUrl: 'image-gallery.html',
       controller: function(){
         this.tab = 1;
         this.selectTab = function(setTab) {
