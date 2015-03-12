@@ -98,35 +98,33 @@
   app.directive('productTitle', function(){
     return {
       restrict: 'E',
-      templateUrl: 'product-title.html'
+      templateUrl: 'includes/product-title.html'
     };
   });
 
-  app.directive('productReviews', function(){
+  app.directive('includes/productReviews', function(){
     return {
       restrict: 'E',
-      templateUrl: 'product-reviews.html'
+      templateUrl: 'includes/product-reviews.html'
     };
   });
 
   app.directive('imageGallery', function(){
     return {
       restrict: 'E',
-      templateUrl: 'image-gallery.html'
+      templateUrl: 'includes/image-gallery.html'
     };
   });
 
   app.directive("productTabs", function() {
     return {
       restrict: 'E',
-      templateUrl: 'product-tabs.html',
+      templateUrl: 'includes/product-tabs.html',
       controller: function() {
         this.tab = 1;
-
         this.isSet = function(checkTab) {
           return this.tab === checkTab;
         };
-
         this.setTab = function(setTab) {
           this.tab = setTab;
         };
