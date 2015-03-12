@@ -116,20 +116,22 @@
     };
   });
 
-  app.directive('productPanels', function(){
+  app.directive("productTabs", function() {
     return {
       restrict: 'E',
-      templateUrl: 'product-panels.html',
-      controller: function(){
+      templateUrl: 'product-tabs.html',
+      controller: function() {
         this.tab = 1;
-        this.selectTab = function(setTab) {
-          this.tab = setTab;
-        };
-        this.isSelected = function(checkTab){
+
+        this.isSet = function(checkTab) {
           return this.tab === checkTab;
         };
+
+        this.setTab = function(setTab) {
+          this.tab = setTab;
+        };
       },
-      controllerAs: 'panel'
+      controllerAs: 'tab'
     };
   });
 
