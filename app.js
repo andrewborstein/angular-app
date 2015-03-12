@@ -80,7 +80,7 @@
     };
   });
 
-  // controller for the panel
+  // controller for the store
   app.controller('StoreController', function(){
     this.products = gems;
   });
@@ -112,7 +112,17 @@
   app.directive('imageGallery', function(){
     return {
       restrict: 'E',
-      templateUrl: 'includes/image-gallery.html'
+      templateUrl: 'includes/image-gallery.html',
+      controller: function() {
+        this.current = 0;
+        this.setCurrent = function(newGallery) {
+          this.current = newGallery || 0;
+        };
+        this.isCurrent = function(newGallery) {
+          return this.current === checkGallery;
+        };
+      },
+      controllerAs: 'gallery'
     };
   });
 
