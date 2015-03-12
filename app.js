@@ -107,6 +107,13 @@
     };
   });
 
+  app.directive('imageGallery', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'image-gallery.html'
+    };
+  });
+
   var test = []
   var gems = [
     { 
