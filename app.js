@@ -100,10 +100,10 @@
     };
   });
 
-  app.directive('productReview', function(){
+  app.directive('productReviews', function(){
     return {
       restrict: 'E',
-      templateUrl: 'product-review.html'
+      templateUrl: 'product-reviews.html'
     };
   });
 
