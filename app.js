@@ -77,7 +77,6 @@
         // store.products = data;
         // store.products = gems;
         console.log(data);
-        console.log('API CALL ERROR: '+status+' / '+headers+' / '+config);
       }).
       error(function(data,status,headers,config){
         console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
