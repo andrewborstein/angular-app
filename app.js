@@ -74,6 +74,9 @@
       }).
       error(function(data,status,headers,config){
         console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
+        console.log(data);
+        console.log(data.data);
+        console.log(data.results);
     });
   }]);
 
