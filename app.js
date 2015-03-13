@@ -60,7 +60,11 @@
   app.controller('StoreController', [ '$http', function($http) {
     var store = this;
     store.products = [];
-    $http.get('https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage')
+    shop_id = 'fiddlefishstore'
+    api_key = '3ugcu6nyygcbysomqa2ed2ja';
+    etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage,'
+
+    $http.jsonp('etsyURL')
       .success(function(data){
         if (data.ok) {
           store.products = data;
