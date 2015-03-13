@@ -75,18 +75,19 @@
     api_key = '3ugcu6nyygcbysomqa2ed2ja';
     etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage,'
 
-    $http.get('https://openapi.etsy.com/v2/shops/fiddlefishstore/listings/active.js?api_key=3ugcu6nyygcbysomqa2ed2ja').
+    $http.jsonp('https://openapi.etsy.com/v2/shops/fiddlefishstore/listings/active.js?api_key=3ugcu6nyygcbysomqa2ed2ja').
       success(function(data,status,headers,config){
         // store.products = data;
         // store.products = gems;
         console.log(data);
+        console.log(data.data);
+        console.log(data.results);
       }).
       error(function(data,status,headers,config){
         console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
         console.log(data);
         console.log(data.data);
-        console.log(data.results);
-    });
+        console.log(data.results);    });
   }]);
 
   // controller for the reviews
