@@ -77,8 +77,8 @@
 
     $http.jsonp('https://openapi.etsy.com/v2/shops/fiddlefishstore/listings/active.js?api_key=3ugcu6nyygcbysomqa2ed2ja').
       success(function(data,status,headers,config){
-        if (data.ok) {
-          // store.products = data;
+          if (data.ok) {
+            // store.products = data;
           // store.products = gems;
           console.log(data);
           console.log(data.data);
@@ -88,10 +88,15 @@
         }
       }).
       error(function(data,status,headers,config){
-        console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
-        console.log(data);
-        console.log(data.data);
-        console.log(data.results);    });
+        if (data.ok) {
+          console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
+          console.log(data);
+          console.log(data.data);
+          console.log(data.results);   
+        } else {
+          alert('Danger, danger.')
+        }
+      });
   }]);
 
   // controller for the reviews
