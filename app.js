@@ -71,13 +71,13 @@
       success(function(results, data,status,headers,config){
         // store.products = data;
         // store.products = gems;
-        console.log(results);
+        //console.log(results);
         console.log(data);
         console.log(data.data);
         console.log(data.results);
       }).
       error(function(data,status,headers,config){
-        console.log(results);
+        //console.log(results);
         console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
         console.log(data);
         console.log(data.data);
