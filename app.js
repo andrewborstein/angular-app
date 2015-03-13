@@ -58,6 +58,12 @@
   // var app = angular.module('application name', [dependencies]);
   var app = angular.module('store', ['store-products']);
 
+  store.config(['$httpProvider', function($httpProvider) {
+   $httpProvider.defaults.useXDomain = true;
+   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+   }
+  ]);
+
   // controller for the whole store
   app.controller('StoreController', [ '$http', function($http) {
     var store = this;
@@ -71,6 +77,7 @@
         // store.products = data;
         // store.products = gems;
         console.log(data);
+        console.log('API CALL ERROR: '+status+' / '+headers+' / '+config;
       }).
       error(function(data,status,headers,config){
         console.log('API CALL ERROR: '+status+' / '+headers+' / '+config + 'Data = '+data);
