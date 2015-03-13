@@ -68,14 +68,9 @@
     etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage,'
 
     $http.jsonp(etsyURL).success(function(data){
-        if (data.ok) {
-          store.products = data;
-          console.log(data);
-        } else {
-          alert(data.error);
-        }
-      });
-
+      store.products = data;
+      console.log(data);
+    });
   }]);
 
   // controller for the reviews
