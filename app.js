@@ -58,15 +58,6 @@
   // var app = angular.module('application name', [dependencies]);
   var app = angular.module('store', ['store-products']);
 
-  app.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    $httpProvider.defaults.withCredentials = true;
-    delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-   }
-  ]);
-
   // controller for the whole store
   app.controller('StoreController', [ '$http', function($http) {
     var store = this;
