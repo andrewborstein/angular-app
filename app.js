@@ -56,34 +56,20 @@
   // var app = angular.module('application name', [dependencies]);
   var app = angular.module('store', ['store-products']);
 
-  // controller for the details panel
-  /*
-  app.controller('PanelController', function(){
-    this.tab = 1;
-    this.selectTab = function(setTab) {
-      this.tab = setTab;
-    };
-    this.isSelected = function(checkTab){
-      return this.tab === checkTab;
-    };
-  });
-  */
-
-  // controller for the image gallery
-  app.controller('GalleryController', function(){
-    this.current = 0;
-    this.setCurrent = function(newGallery) {
-      this.current = newGallery || 0;
-    };
-    this.isCurrent = function(newGallery) {
-      return this.current === checkGallery;
-    };
-  });
-
-  // controller for the store
-  app.controller('StoreController', function(){
-    this.products = gems;
-  });
+  // controller for the whole store
+  app.controller('StoreController', [ '$http', function($http) {
+    var store = this;
+    store.products = [];
+    $http.get('https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage')
+      .success(function(data){
+        if (data.ok) {
+          store.products = data;
+          console.log(data);
+        } else {
+          alert(data.error);
+        }
+      });
+  }]);
 
   // controller for the reviews
   app.controller('ReviewController', function(){
