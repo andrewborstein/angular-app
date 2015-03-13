@@ -67,13 +67,13 @@
     etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage,'
 
     $http.jsonp(etsyURL).
-    success(function (data) {
-      store.products = data;
-      store.products = gems;
-      console.log(data);
-    }).
-    error(function (data) {
-      console.log("Request failed");
+      success(function(data,status,headers,config){
+        // store.products = data;
+        // store.products = gems;
+        console.log(data);
+      }).
+      error(function(data,status,headers,config){
+        console.log('API CALL ERROR: '+status);
     });
   }]);
 
