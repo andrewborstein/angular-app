@@ -73,7 +73,7 @@
         console.log(data);
       }).
       error(function(data,status,headers,config){
-        console.log('API CALL ERROR: '+status);
+        console.log('API CALL ERROR: '+status+' / '+headers+' / '+config);
     });
   }]);
 
