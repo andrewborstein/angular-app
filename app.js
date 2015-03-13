@@ -1,6 +1,7 @@
 // wrap the whole thing in an empty function
 (function() {
 
+  /*
   shop_id = 'fiddlefishstore'
   api_key = '3ugcu6nyygcbysomqa2ed2ja';
   etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage,'
@@ -52,6 +53,7 @@
       }
     }
   });
+  */
 
   // var app = angular.module('application name', [dependencies]);
   var app = angular.module('store', ['store-products']);
