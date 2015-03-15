@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <!-- attach 'gemStore' app -->
-<html>
+<html ng-app="store">
   <head>
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container hide" ng-app="etsy">
-      <div ng-controller="FetchController">
-        <pre>http status code: {{status}}</pre>
-        <pre>http response data: {{data}}</pre>
-      </div>
-    </div>
-    <div class="container" ng-app="store">
+    <div class="container">
       <!-- attach StoreController using variable 'store' -->
       <div ng-controller="StoreController as store">
         <!-- loop through each store product variable 'product' -->
