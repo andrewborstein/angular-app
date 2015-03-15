@@ -7,15 +7,26 @@
   </head>
   <body>
     <div class="container">
-      <div class="hide" ng-controller="EtsyController">
-        <pre>http status code: {{status}}</pre>
-        <pre>http response data: {{data}}</pre>
+      <div class="row" ng-controller="EtsyController">
+        <div class="row well default" ng-repeat="item in data.results">
+          <div class="col-xs-12 col-sm-3">
+            <a href="{{item.url}}">
+              <img src="{{item.MainImage.url_570xN}}" class="img-responsive img-thumbnail">
+            </a>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <h3><a href="{{item.url}}">{{item.title}}</a></h3>
+            <h5>{{item.price | currency }}</h5>
+            <small>({{item.quantity}} in stock)</small>
+            <p>{{item.description}}</p>
+          </div>          
+        </div>
       </div>
       <!-- attach StoreController using variable 'store' -->
       <div ng-controller="StoreController as store">
         <!-- loop through each store product variable 'product' -->
         <div class="col-xs-12 col-sm-6" ng-repeat="product in store.products | orderBy : 'price' ">
-            <!-- hide when product solOut attr is true (default = false) -->
+            <!-- hide when product soldOut attr is true (default = false) -->
             <div class="panel panel-default" ng-hide="product.soldOut" >
               <div class="panel-heading">
                 <product-title></product-title>
