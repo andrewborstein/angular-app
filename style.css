@@ -52,10 +52,12 @@ ul.thumbs li img {
   -webkit-box-shadow: none;
   border-top: 1px solid #f5f5f5;
 }
-
 .ng-invalid.ng-dirty {
   border-color: #fa787e
 }
 .ng-valid.ng-dirty {
   border-color: #78fa89
+}
+.label {
+  margin-right: 5px;
 }
