@@ -81,14 +81,14 @@
         success(function(data, status, results) {
           $scope.status = status;
           $scope.data = data;
-          console.log('status:');
-          console.log(status);
-          console.log('data response:');
-          console.log(data);
+          // console.log('status:');
+          // console.log(status);
+          // console.log('data response:');
+          // console.log(data);
         }).
         error(function(data, status) {
-          $scope.data = data || "Request failed";
-          $scope.status = status;
+          // $scope.data = data || "Request failed";
+          // $scope.status = status;
       });
       
   }]);
@@ -110,7 +110,7 @@
       
       shop_id = 'fiddlefishstore'
       api_key = '&api_key=3ugcu6nyygcbysomqa2ed2ja';
-      fields = '&fields=title,url,price,quantity,description';
+      fields = '&fields=title,url,price,quantity,description,tags,materials,category_path,state,last_modified_tsz,views';
       limit = '&limit=100';
       includes = '&includes=MainImage';
       callback = '&callback=JSON_CALLBACK';
@@ -123,6 +123,8 @@
         +includes
         +callback    
 
+      
+
       $http.jsonp(etsyURL).
         success(function(data, status, results) {
           $scope.status = status;
@@ -131,6 +133,7 @@
           console.log(status);
           console.log('data response:');
           console.log(data);
+          console.log(etsyURL);
         }).
         error(function(data, status) {
           $scope.data = data || "Request failed";

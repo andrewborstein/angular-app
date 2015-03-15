@@ -11,8 +11,13 @@
       <a href="" ng-click="tab.setTab(3)">Reviews</a>
     </li>
   </ul>
-  <div class="well" ng-show="tab.isSet(1)">{{product.description}}</div>
-  <div class="well" ng-show="tab.isSet(2)">{{product.specs}}</div>
+  <div class="well" ng-show="tab.isSet(1)">{{item.description}}</div>
+  <div class="well" ng-show="tab.isSet(2)">
+    {{item.materials}}
+    {{item.tags}}
+    {{item.category_path}}
+    {{item.taxonomy_path}}
+  </div>
   <div class="well" ng-show="tab.isSet(3)">
     <product-reviews></product-reviews>
   </div>

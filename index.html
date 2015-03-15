@@ -25,9 +25,9 @@
       <!-- attach StoreController using variable 'store' -->
       <div ng-controller="StoreController as store">
         <!-- loop through each store product variable 'product' -->
-        <div class="col-xs-12 col-sm-6" ng-repeat="product in store.products | orderBy : 'price' ">
+        <div class="col-xs-12 col-sm-6" ng-repeat="item in data.results | orderBy : 'price' ">
             <!-- hide when product soldOut attr is true (default = false) -->
-            <div class="panel panel-default" ng-hide="product.soldOut" >
+            <div class="panel panel-default">
               <div class="panel-heading">
                 <product-title></product-title>
               </div>
