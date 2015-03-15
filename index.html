@@ -7,6 +7,10 @@
   </head>
   <body>
     <div class="container">
+      <div class="hide" ng-controller="EtsyController">
+        <pre>http status code: {{status}}</pre>
+        <pre>http response data: {{data}}</pre>
+      </div>
       <!-- attach StoreController using variable 'store' -->
       <div ng-controller="StoreController as store">
         <!-- loop through each store product variable 'product' -->
