@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- attach 'gemStore' app -->
+<html ng-app="gemStore">
+  <head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <!-- attach StoreController using variable 'store' -->
+      <div ng-controller="StoreController as store">
+        <!-- loop through each store product variable 'product' -->
+        <div class="col-xs-12 col-sm-6" ng-repeat="product in store.products | orderBy : 'price' ">
+            <!-- hide when product solOut attr is true (default = false) -->
+            <div class="panel panel-default" ng-hide="product.soldOut" >
+              <div class="panel-heading">
+                <h3 class="text-primary text-center">{{product.name | uppercase}} 
+                  <!-- filter results -  {{data | filter:options }} -->
+                  <span class="price">{{product.price | currency}}</span>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-xs-12" ng-show="product.images.length" ng-controller="GalleryController as gallery">
+                  <!-- Image Gallery, show if images exist  -->
+                  <div class="gallery">
+                    <div class="img-wrap text-center">
+                      <img ng-src="{{product.images[gallery.current]}}" class="img-reponsive ">
+                    </div>
+                    <ul class="thumbs clearfix">
+                      <li class="small-image pull-left" ng-repeat="image in product.images">
+                        <a href ng-click="gallery.setCurrent([image])"><img ng-src="{{image}}" class="img-responsive" /></a>
+                      </li>
+                    </ul>
+                  </div>
+                 
+                </div>
+                <div class="col-xs-12" ng-controller="PanelController as panel">
+                  <hr>
+                  <ul class="nav nav-pills nav-justified">
+                    <li ng-class="{ active: panel.isSelected(1) }">
+                      <a href="" ng-click="panel.selectTab(1)">Description</a>
+                    </li>
+                    <li ng-class="{ active: panel.isSelected(2) }">
+                      <a href="" ng-click="panel.selectTab(2)">Specs</a>
+                    </li>
+                    <li ng-class="{ active: panel.isSelected(3) }">
+                      <a href="" ng-click="panel.selectTab(3)">Reviews</a>
+                    </li>
+                  </ul>
+                  <div class="well" ng-show="panel.isSelected(1)">{{product.description}}</div>
+                  <div class="well" ng-show="panel.isSelected(2)">{{product.specs}}</div>
+                  <div class="well" ng-show="panel.isSelected(3)">
+                  
+                    <h4>REVIEWS</h4>
+                    <div class="review" ng-repeat="review in product.reviews">
+                      <strong>{{review.stars}} Stars</strong> <br>
+                      <blockquote>{{review.body}}</blockquote>
+                      <cite>- {{review.author}}</cite> 
+                      <hr>
+                    </div>
+                    
+                    <h4>SUBMIT YOUR REVIEW</h4>
+                    <form nam="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+                      <div class="review">
+                        <strong>{{reviewCtrl.review.stars}} Stars</strong> <br>
+                        <blockquote>{{reviewCtrl.review.body}}</blockquote>
+                        <cite>- {{reviewCtrl.review.author}}</cite>                        
+                      </div>
+                      <fieldset class="form-group">
+                        <select ng-model="reviewCtrl.review.stars" ng-init="review.stars=''" class="form-control">
+                          <option value="">Choose a star rating</option>
+                          <option value="1">1 star</option>
+                          <option value="2">2 stars</option>
+                          <option value="3">3 star</option>
+                          <option value="4">4 stars</option>
+                          <option value="5">5 star</option>
+                        </select>
+                      </fieldset>
+                      <fieldset class="form-group">
+                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Leave your review here..."></textarea>
+                      </fieldset>
+                      
+                      <fieldset class="form-group">
+                        <input type="email" ng-model="reviewCtrl.review.author" class="form-control" placeholder="your@email.com">
+                      </fieldset>
+                      <fieldset class="form-group">
+                        <input type="submit" value="Submit" class="form-control btn btn-primary">
+                      </fieldset>
+                    </form>
+                  </div>
+
+                <div class="text-center">
+                  <!-- show button if expression is true (default = false) -->
+                  <button class="btn btn-primary text-uppercase" ng-show="product.canPurchase">Add to Cart</button>
+                </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

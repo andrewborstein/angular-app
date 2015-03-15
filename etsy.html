@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Etsy jQuery Demo</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.9.0/oauth.js"></script>
+    <script type="text/javascript" src="etsy.js"></script>
+    <style>
+        body {
+          background: url(img/loading.svg) no-repeat;
+          background-position: 50% 10%;
+        }
+        p.loading-msg {
+          position: absolute;
+          top: 0;
+          text-align: center;
+          width: 100%;
+          z-index: 0;
+        }
+        #etsy {
+          background: white;
+          z-index: 1;
+          position: relative;
+        }
+        ul li {
+          list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <p class="loading-msg">Please wait while we retrieve your shop info...</p>
+    <div id="etsy">
+        <h1 class="total"></h1>
+        <ul class="items"></ul>
+    </div>
+</body>
+</html>

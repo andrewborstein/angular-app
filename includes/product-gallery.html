@@ -1,0 +1,13 @@
+<div class="col-xs-12" ng-show="product.images.length">
+  <!-- Image Gallery, show if images exist  -->
+  <div class="gallery">
+    <div class="img-wrap text-center">
+      <img ng-src="{{product.images[gallery.current]}}" class="img-reponsive ">
+    </div>
+    <ul class="thumbs clearfix">
+      <li class="small-image pull-left" ng-repeat="image in product.images">
+        <a href ng-click="gallery.setCurrent(image)"><img ng-src="{{image}}" class="img-responsive" /></a>
+      </li>
+    </ul>
+  </div>
+</div>
