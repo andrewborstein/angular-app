@@ -6,9 +6,9 @@
 
   // controller for the whole store
   app.controller('StoreController', function() {
-    var store = this;
+    //var store = this;
+    //store.products = [];
     this.products = gems;
-    store.products = [];
   });
 
   // Example request for index page

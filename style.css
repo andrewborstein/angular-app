@@ -1,3 +1,6 @@
+.hide {
+  display: none;
+}
 ul.thumbs {
     margin: 0;
     padding: 0;
