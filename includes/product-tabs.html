@@ -8,11 +8,13 @@
       <a href="" ng-click="tab.setTab(2)">Details</a>
     </li>
     <li ng-class="{ active: tab.isSet(3) }">
-      <a href="" ng-click="tab.setTab(3)">Popularity</a>
+      <a href="" ng-click="tab.setTab(3)">Sales Info</a>
     </li>
+    <!--
     <li ng-class="{ active: tab.isSet(4) }">
       <a href="" ng-click="tab.setTab(4)">Reviews</a>
     </li>
+    -->
   </ul>
   <div class="well" ng-show="tab.isSet(1)">{{item.description | limitTo : 200}}...</div>
   <div class="well" ng-show="tab.isSet(2)">
@@ -26,9 +28,11 @@
     <p><strong>quantity</strong>: {{item.quantity}}</p>
     <p><strong>last modified</strong>: {{item.last_modified_tsz | date}}</p>
   </div>
+  <!--
   <div class="well" ng-show="tab.isSet(4)">
     <product-reviews></product-reviews>
   </div>
+  -->
 
   <div class="text-center">
     <!-- show button if expression is true (default = false) -->
