@@ -59,5 +59,8 @@ ul.thumbs li img {
   border-color: #78fa89
 }
 .label {
-  margin-right: 5px;
+  margin: 2px 4px;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 200;
 }
