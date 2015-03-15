@@ -11,8 +11,8 @@
     this.products = gems;
   });
 
-  // Example request for index page
-  angular.module('httpExample', [])
+  // ETSY API Request
+  angular.module('etsy', [])
     .controller('FetchController', ['$scope', '$http',
       function($scope, $http) {
 
