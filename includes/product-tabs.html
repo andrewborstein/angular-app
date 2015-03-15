@@ -16,15 +16,15 @@
   </ul>
   <div class="well" ng-show="tab.isSet(1)">{{item.description | limitTo : 200}}...</div>
   <div class="well" ng-show="tab.isSet(2)">
-    <p><em ng-repeat="material in item.materials"></em></p>
-    {{item.tags}}
-    {{item.category_path}}
-    {{item.taxonomy_path}}
+    <p><em ng-repeat="material in item.materials">{{material}}, </em></p>
+    <p>tags: {{item.tags}}</p>
+    <p>categories: {{item.category_path}}</p>
+    <p>meta: {{item.taxonomy_path}}</p>
   </div>
   <div class="well" ng-show="tab.isSet(3)">
-    {{item.views}}
-    {{item.quantity}}
-    {{item.last_modified_tsz}}
+    <p>view: {{item.views}}</p>
+    <p>quantity: {{item.quantity}}</p>
+    <p>last modified: {{item.last_modified_tsz | date}}</p>
   </div>
   <div class="well" ng-show="tab.isSet(4)">
     <product-reviews></product-reviews>

@@ -7,7 +7,6 @@
   </head>
   <body>
     <div class="container">
-      <!--
       <div class="row" ng-controller="EtsyController">
         <div class="well default" ng-repeat="item in data.results">
           <div class="row" >
@@ -20,13 +19,17 @@
               <h3><a href="{{item.url}}">{{item.title}}</a></h3>
               <h5>{{item.price | currency }}</h5>
               <small>({{item.quantity}} in stock)</small>
+              <p>{{item.category_tags}}
+              {{item.category_materials}}
+              {{item.category_path}}
+              {{item.taxonomy_path}}
+              </p>
               <p>{{item.description | limitTo : 200}}...</p>
-              <p><em ng-repeat="material in item.materials">{{material}},</em></p>
+              
             </div>  
           </div>        
         </div>
       </div>
-      -->
       <!-- attach StoreController using variable 'store' -->
       <div ng-controller="StoreController as store">
         <!-- loop through each store product variable 'product' -->
