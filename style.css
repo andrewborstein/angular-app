@@ -21,12 +21,9 @@ ul.thumbs li img {
   position: relative;
 }
 .panel-heading span {
-  color: #666;
+  color: #333;
   font-weight: 300;
-  font-size: 80%;
-  position: absolute;
-  right: 20px;
-  top: 30px;
+  padding: 10px 0 0 ;
 }
 .nav-pills>li>a {
   border-radius: 4px 4px 0 0;
