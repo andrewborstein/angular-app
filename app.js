@@ -69,15 +69,10 @@
     limit = '&limit=100';
     includes = '&includes=MainImage';
     callback = '&callback=JSON_CALLBACK';
-    etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET'
-      +api_key
-      +fields
-      +limit
-      +includes
-      +callback    
+    etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET'+api_key+fields+limit+includes+callback    
 
     console.log(etsyURL);
-    
+
     $http.jsonp(etsyURL).
       success(function(data, status) {
         $scope.status = status;
