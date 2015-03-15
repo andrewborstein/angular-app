@@ -76,7 +76,9 @@
       +includes
       +callback    
 
-    $http({method: 'JSONP', url: etsyURL}).
+    console.log(etsyURL);
+    
+    $http.jsonp(etsyURL).
       success(function(data, status) {
         $scope.status = status;
         $scope.data = data;
