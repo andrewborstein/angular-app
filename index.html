@@ -8,18 +8,20 @@
   <body>
     <div class="container">
       <div class="row" ng-controller="EtsyController">
-        <div class="row well default" ng-repeat="item in data.results">
-          <div class="col-xs-12 col-sm-3">
-            <a href="{{item.url}}">
-              <img src="{{item.MainImage.url_570xN}}" class="img-responsive img-thumbnail">
-            </a>
-          </div>
-          <div class="col-xs-12 col-sm-9">
-            <h3><a href="{{item.url}}">{{item.title}}</a></h3>
-            <h5>{{item.price | currency }}</h5>
-            <small>({{item.quantity}} in stock)</small>
-            <p>{{item.description}}</p>
-          </div>          
+        <div class="well default" ng-repeat="item in data.results">
+          <div class="row" >
+            <div class="col-xs-12 col-sm-3">
+              <a href="{{item.url}}">
+                <img src="{{item.MainImage.url_570xN}}" class="img-responsive img-thumbnail">
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+              <h3><a href="{{item.url}}">{{item.title}}</a></h3>
+              <h5>{{item.price | currency }}</h5>
+              <small>({{item.quantity}} in stock)</small>
+              <p>{{item.description}}</p>
+            </div>  
+          </div>        
         </div>
       </div>
       <!-- attach StoreController using variable 'store' -->

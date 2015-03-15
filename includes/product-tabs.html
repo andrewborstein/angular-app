@@ -5,10 +5,13 @@
       <a href="" ng-click="tab.setTab(1)">Description</a>
     </li>
     <li ng-class="{ active: tab.isSet(2) }">
-      <a href="" ng-click="tab.setTab(2)">Specs</a>
+      <a href="" ng-click="tab.setTab(2)">Details</a>
     </li>
     <li ng-class="{ active: tab.isSet(3) }">
-      <a href="" ng-click="tab.setTab(3)">Reviews</a>
+      <a href="" ng-click="tab.setTab(3)">Popularity</a>
+    </li>
+    <li ng-class="{ active: tab.isSet(4) }">
+      <a href="" ng-click="tab.setTab(4)">Reviews</a>
     </li>
   </ul>
   <div class="well" ng-show="tab.isSet(1)">{{item.description}}</div>
@@ -19,6 +22,11 @@
     {{item.taxonomy_path}}
   </div>
   <div class="well" ng-show="tab.isSet(3)">
+    {{item.views}}
+    {{item.quantity}}
+    {{item.last_modified_tsz}}
+  </div>
+  <div class="well" ng-show="tab.isSet(4)">
     <product-reviews></product-reviews>
   </div>
 
