@@ -158,15 +158,30 @@ img {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
 }
-span.title {
+span#title {
   position: absolute;
   top: 0;
   right: 0;
   font-size: 11px;
-  padding: 5px;
+  padding: 10px;
   display: inline-block;
   width: 70%;
   line-height: 160%;
+}
+#preview.right-img img {
+    float: right;
+}
+#preview.right-img #title {
+    right: initial;
+    width: 65%
+}
+#preview.no-img img {
+  display: none;
+}
+#preview.no-img #title {
+    right: initial;
+    width: 100%;
+    left: 0;
 }
 .overlay {
   position: absolute;
