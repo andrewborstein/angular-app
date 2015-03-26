@@ -165,7 +165,7 @@ span.title {
   font-size: 11px;
   padding: 5px;
   display: inline-block;
-  max-width: 70%;
+  width: 70%;
   line-height: 160%;
 }
 .overlay {
