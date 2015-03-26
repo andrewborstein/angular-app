@@ -25,6 +25,9 @@
   left: 50%;
   margin-left: -107px;
 }
+hr {
+  margin: 0;
+}
 nav.navbar.navbar-default {
   padding: 10px 0;
 }
