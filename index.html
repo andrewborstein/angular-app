@@ -5,56 +5,211 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
   <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <!--
-    <div class="container">
-      <div class="row" ng-controller="EtsyController">
-        <div class="well default" ng-repeat="item in data.results">
-          <div class="row" >
-            <div class="col-xs-12 col-sm-3">
-              <a href="{{item.url}}">
-                <img src="{{item.MainImage.url_570xN}}" class="img-responsive img-thumbnail">
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-9">
-              <h3><a href="{{item.url}}">{{item.title}}</a></h3>
-              <h5>{{item.price | currency }}</h5>
-              <small>({{item.quantity}} in stock)</small>
-              <p>{{item.category_tags}}
-              {{item.category_materials}}
-              {{item.category_path}}
-              {{item.taxonomy_path}}
-              </p>
-              <p>{{item.description | limitTo : 200}}...</p>
-              
-            </div>  
-          </div>        
-        </div>
-      </div>
-      -->
-      <!-- attach StoreController using variable 'store' -->
-      <div ng-controller="StoreController as store">
-        <!-- loop through each store product variable 'product' -->
-        <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in data.results | orderBy : 'price' ">
-            <!-- hide when product soldOut attr is true (default = false) -->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <product-title></product-title>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand click" href="#">Create Your Promotion</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+             
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Links <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Cidewalk</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-9" >
+
+            <ul class="nav nav-tabs" ng-init="tab = 1" ng-src="{{tab}}">
+              <li role="presentation" ng-class="{active:tab===1}"><a href="#" ng-click="tab = 1">1. Product</a></li>
+              <li role="presentation" ng-class="{active:tab===2}"><a href="#" ng-click="tab = 2">2. Design</a></li>
+              <li role="presentation" ng-class="{active:tab===3}"><a href="#" ng-click="tab = 3" onclick="googleMap()">3. Location</a></li>
+              <li role="presentation" ng-class="{active:tab===4}"><a href="#" ng-click="tab = 4">4. Audience</a></li>
+              <li role="presentation" ng-class="{active:tab===5}"><a href="#" ng-click="tab = 5">5. Summary</a></li>
+            </ul>
+
+          <!-- 1. Process -->
+          <div class="well" ng-show="tab === 1">
+
+          
+          
+            <!-- attach StoreController using variable 'store' -->
+            <div class="row" ng-controller="StoreController as store">
+
+              <div class="col-xs-12">
+                <div class="col-sm-4 text-center">
+                  <h2>Select a Product</h2>
+                </div>
+                <div class="col-sm-4">
+                  <form>
+                    <div class="form-group searchv">
+                      
+                      <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                      <input type="text" class="form-control input-md text-center" placeholder="Search in {{ data.count }} products" ng-model="search">
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div class="panel-body">
-                <product-gallery></product-gallery> 
-                <product-tabs></product-tabs>
+
+              <!-- loop through each store product variable 'product' -->
+              <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="item in data.results | filter:search | orderBy : 'price' ">
+
+                <!-- LOOP OVER THE PRODUCTS IN $scope.products -->
+                <div class="panel click">
+                  <div class="product panel-content" style="background: url({{ item.MainImage.url_570xN }}) no-repeat center center">
+                    <img src="{{ item.MainImage.url_570xN }}" class="hide">
+                    <div class="hide title_test">{{ item.title }}</div>
+                    <div class="footer">
+                      <h5 class="title">{{ item.title }}</h5>
+                      <span class="price">{{ item.price | currency }}</span> <span class="price hide">| {{ item.last_modified_tsz * 1000 | date }}</span>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
-        </div>
+          </div>
+
+          <!-- 2. Design -->
+          <div class="well" ng-show="tab === 2">
+            <h2>Choose Your Design</h2>
+          </div>
+
+
+          <!-- 3. Design -->
+          <div class="well" ng-show="tab === 3">
+            <h2>Target a Location</h2>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-1 control-label">Location:</label> 
+                <div class="col-xs-12 col-sm-5">
+                  <input type="text" class="form-control" id="us2-address" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-1 control-label">Radius:</label> 
+                <div class="col-xs-12 col-sm-5">
+                  <input type="text" class="form-control" id="us2-radius" style="width: 60px"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div id="us2" style="width: 100%; height: 400px;"></div>    
+              </div>   
+              <div class="form-group hide">
+                Lat.: <input type="text" id="us2-lat"/>
+                Long.: <input type="text" id="us2-lon"/>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 4. Design -->
+          <div class="well" ng-show="tab === 4" id="audience">
+            <h2>Size Your Audience</h2>
+            <p>I want my promotion to reach <input id="number" type="text" placeholder="1000"> people in my target area.
+            <h4 class="cost" >Estimated cost = <span id="cost"></span></h4>
+          </div>
+
+
+          <!-- 5. Design -->
+          <div class="well" ng-show="tab === 5">
+            <h2>Launch Your Promotion</h2>
+          </div>
+
+
       </div>
+      <!-- // Process -->
+
+      <!-- // Preview -->
+      <div class="col-xs-12 col-sm-3" style="position: relative">
+        <h3 class="text-center">preview</h3>
+        <img src="img/iphone-frame-half-bg.png" class="img-responsive">
+        <div id="preview" class="col-xs-12 mobile-preview">
+          <img src="" class="img-responsive">
+          <span class="title"></span>
+        </div>
+        <img src="img/iphone-frame-half.png" class="img-responsive overlay">
+      </div>
+
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="products.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/products.js"></script>
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+    <script src="js/locationpicker/dist/locationpicker.jquery.js"></script>
+
+    <script>
+    var audienceLocation = null;
+    function googleMap() {
+        $('#us2').locationpicker({
+        location: {latitude: 42.3504798, longitude: -71.05893370000001}, 
+        radius: 1500,
+        inputBinding: {
+          latitudeInput: $('#us2-lat'),
+          longitudeInput: $('#us2-lon'),
+          radiusInput: $('#us2-radius'),
+          locationNameInput: $('#us2-address')
+        },
+        enableAutocomplete: true,
+        onchanged: function(currentLocation, radius, isMarkerDropped) {
+          console.log("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
+        },
+        zoom: 13
+        });
+        
+      };
+
+    $(document).ready(function(){
+      $('body').on('click','.product', function(){
+        $(this).each(function(){
+          console.log('click!');
+          var productImg = $(this).children('img').attr('src');
+          $('#preview img').attr('src', productImg);
+          var productTitle = $(this).children('.title_test').text();
+          console.log(productTitle);
+          $('#preview .title').html(productTitle);
+          $('#audience .product').html(productTitle);
+        });
+        var audienceLocation = $('#us2-address').text();
+        console.log(audienceLocation)
+        $('#audience .location').html(audienceLocation);
+      }); 
+      $( "#number" ).on("input", function() {
+        var dInput = parseInt(this.value) / 100 ;
+        $('#cost').text('$'+dInput);
+      });
+    });
+  </script> 
   </body>
 </html>
