@@ -1,6 +1,33 @@
 .hide {
   display: none
 }
+.full-height {
+  height: 100vh;
+  background: url(img/bg1.jpeg) no-repeat center center;
+  background-size: cover;
+}
+.v-align-out {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.v-align-in {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+}
+.jumbotron {
+  color: white;
+  background: transparent;
+}
+.container-fluid>.navbar-header {
+  position: relative;
+  left: 50%;
+  margin-left: -107px;
+}
+nav.navbar.navbar-default {
+  padding: 10px 0;
+}
 ul.thumbs {
     margin: 0;
     padding: 0;
@@ -113,11 +140,6 @@ body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: Lato}
   color: #428bca;
   font-weight: bold;
 }
-.container-fluid>.navbar-header {
-  position: relative;
-  left: 50%;
-  margin-left: -107px;
-}
 img {
   position: relative
 }
@@ -164,6 +186,9 @@ input#number {
 }
 .form-group.search {
   padding: 20px 0 0;
+}
+.welcome .padding {
+  padding: 15px;
 }
 @media (max-width: 1200px) {
   .mobile-preview { bottom: 20% }

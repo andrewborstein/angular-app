@@ -11,7 +11,7 @@
   </head>
   <body>
 
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default" id="start">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -102,6 +102,21 @@
           <!-- 2. Design -->
           <div class="well" ng-show="tab === 2">
             <h2>Choose Your Design</h2>
+            <div class="row text-center">
+              <div class="col-xs-12 col-sm-4">
+                <h4>Photo</h4>
+                Left | Right | None
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <h4>Text</h4>
+                Product Title | Shop Name | Both
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <h4>Something Else</h4>
+                Not | Sure | What | Else
+              </div>
+            </div>
+
           </div>
 
 
@@ -134,9 +149,9 @@
 
           <!-- 4. Design -->
           <div class="well" ng-show="tab === 4" id="audience">
-            <h2>Size Your Audience</h2>
-            <p>I want my promotion to reach <input id="number" type="text" placeholder="1000"> people in my target area.
-            <h4 class="cost" >Estimated cost = <span id="cost"></span></h4>
+            <h2>Budget Your Audience</h2>
+            <p>I would like to spend <input id="number" type="text" placeholder="10"> on this promotion. 
+            <h4 class="cost" >Estimated reach = <span id="cost"></span> people in my target area.</h4>
           </div>
 
 
@@ -206,8 +221,8 @@
         $('#audience .location').html(audienceLocation);
       }); 
       $( "#number" ).on("input", function() {
-        var dInput = parseInt(this.value) / 100 ;
-        $('#cost').text('$'+dInput);
+        var dInput = parseInt(this.value) * 100 ;
+        $('#cost').text(dInput);
       });
     });
   </script> 

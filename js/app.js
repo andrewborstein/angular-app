@@ -1,60 +1,6 @@
 // wrap the whole thing in an empty function
 (function() {
 
-  /*
-  shop_id = 'fiddlefishstore'
-  api_key = '3ugcu6nyygcbysomqa2ed2ja';
-  etsyURL = 'https://openapi.etsy.com/v2/shops/'+shop_id+'/listings/active.js?method=GET&api_key='+api_key+'&fields=title,url,price,quantity,description&limit=100&includes=MainImage,'
-
-  var html = "";
-  $.ajax({
-    url: etsyURL,
-    dataType: 'jsonp',
-    beforeSend: function() {
-      $('#etsy').addClass('loading'); // Show loader icon
-    },
-    complete: function() {
-      $('#etsy').removeClass('loading'); // Hide loader icon
-    },
-    success: function(data) {
-      if (data.ok) {
-        console.log(data);
-        console.log(data.results);
-        console.log(data.results[0].title);
-
-        var notyet = ''
-        
-        // Total number of items in your shop
-        var listingsTotal = 'You have '+data.count+' products in your shop';
-
-        $.each( data.results, function ( i, item ) {
-        // Specific Listing Title
-        var image = this.MainImage.url_570xN;
-        var title = this.title;
-        var url = this.url;
-        var price = this.price;
-        var quantity = this.quantity;
-        var id = this.listing_id;
-        var desc = this.description;
-        html += '<li class="item">' + 
-                '<a href="' + url + '">' +
-                  '<img class="avatar" src="' + image + '">' + 
-                  '<h4 class="title">' + title + '</h4>' + 
-                  '</a>' +
-                  '<p class="desc">' + desc + '</p>' +
-                  '<p class="price"><strong>Price</strong>: $' + price + '</p>' +
-                  '<p class="quantity"><strong>Quantity</strong>: ' + quantity + '</p>' + 
-                '</li>';
-        });
-        $( '.total' ).prepend(listingsTotal);
-        $( '.items' ).append(html);
-      } else {
-        alert(data.error);
-      }
-    }
-  });
-  */
-
   // var app = angular.module('application name', [dependencies]);
   var app = angular.module('store', ['store-products']);
 
@@ -110,7 +56,21 @@
   app.controller('StoreController', ['$scope', '$http',
     function($scope, $http) {
       
-      shop_id = 'fiddlefishstore'
+      function getQueryVariable(variable)
+      {
+         var query = window.location.search.substring(1);
+         var vars = query.split("&");
+         for (var i=0;i<vars.length;i++) {
+           var pair = vars[i].split("=");
+           if(pair[0] == variable){return pair[1];}
+         }
+         return(false);
+      }
+      var getShopUrl = getQueryVariable("shop");
+      var currentPath = getShopUrl;
+      console.log(currentPath);
+
+      shop_id = currentPath;
       api_key = '&api_key=3ugcu6nyygcbysomqa2ed2ja';
       fields = '&fields=title,url,price,quantity,description,tags,materials,category_path,state,last_modified_tsz,views';
       limit = '&limit=100';
@@ -131,12 +91,13 @@
         success(function(data, status, results) {
           $scope.status = status;
           $scope.data = data;
-          console.log('status:');
+          console.log('_response status_');
           console.log(status);
-          console.log('data response:');
+          console.log('_response data_');
           console.log(data);
+          console.log('_resopnse url_');
           console.log(etsyURL);
-          console.log('listening');
+          console.log('listening...');
         }).
         error(function(data, status) {
           $scope.data = data || "Request failed";
