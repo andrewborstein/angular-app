@@ -209,6 +209,9 @@ span#cost {
 .welcome .padding {
   padding: 15px;
 }
+h5 {
+  font-weight: bold
+}
 @media (max-width: 1200px) {
   .mobile-preview { bottom: 20% }
 }
